@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.boss.rbac_learning.dao.UserDao">
+    <insert id="add" parameterType="com.boss.rbac_learning.entity.UserForHighLevel">
+        insert into rbac.user(id, username, password, roleid) values(#{id},#{username},#{password},#{roleid})
+    </insert>
+    <update id="updateAuthority">
+            update rbac.user set roleid = #{authority} where id = #{id}
+    </update>
+
+    <delete id="delById" parameterType="int">
+         delete from rbac.user where id = #{id}
+    </delete>
+
+    <select id="queryAllHighLevel" resultType="com.boss.rbac_learning.entity.UserForHighLevel">
+          select * from rbac.user
+    </select>
+
+    <select id="queryAll" resultType="com.boss.rbac_learning.entity.User">
+        select id, username, roleid from rbac.user
+    </select>
+
+</mapper>
