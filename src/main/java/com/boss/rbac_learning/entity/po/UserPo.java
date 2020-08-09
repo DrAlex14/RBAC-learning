@@ -1,13 +1,13 @@
-package com.boss.rbac_learning.entity;
+package com.boss.rbac_learning.entity.po;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.experimental.Accessors;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
-@Accessors(chain = true)
-public class UserForHighLevel {
+public class UserPo {
     private int id;
 
     private String username;

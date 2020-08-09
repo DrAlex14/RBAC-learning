@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.boss.rbac_learning.dao.PremissionDao">
+    <insert id="addPermission" >
+        insert into rbac.premission(id, permissionname, permissionurl) values (#{param1},#{param2},#{param3})
+    </insert>
+
+    <select id="queryAll" resultType="com.boss.rbac_learning.entity.dto.PremissionDto">
+         select premission.id, premission.permissionname, premission.permissionurl FROM rbac.premission
+    </select>
+
+    <delete id="delete">
+        delete from rbac.premission where permissionname = #{name}
+    </delete>
+
+</mapper>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.boss.rbac_learning.dao.AuthorizationDao">
+
+    <insert id="add" parameterType="int">
+    insert into rbac.role_premission(roleid, permissionid) values (#{param1},#{param2})
+    </insert>
+
+    <delete id="delete">
+        delete from rbac.role_premission where id = #{id}
+    </delete>
+
+    <select id="queryAll" resultType="com.boss.rbac_learning.entity.dto.AuthorizationDto">
+        select * from rbac.role_premission order by roleid
+    </select>
+</mapper>

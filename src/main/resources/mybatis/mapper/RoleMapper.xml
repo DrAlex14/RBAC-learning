@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.boss.rbac_learning.dao.RoleDao">
+    <delete id="deleteByName">
+        delete from rbac.role where name = #{name}
+    </delete>
+
+    <select id="queryAll" resultType="com.boss.rbac_learning.entity.dto.RoleDto">
+        select * from rbac.role
+    </select>
+    <select id="queryPremissions" resultType="java.lang.String">
+        SELECT permissionurl FROM rbac.premission
+        WHERE id = any(SELECT role_premission.permissionid FROM rbac.role_premission
+                       WHERE role_premission.roleid = (SELECT role.id FROM rbac.role
+                                                       WHERE role.name = #{name}))
+    </select>
+
+    <insert id="addRole" >
+        insert into rbac.role(id, name) values (#{param1},#{param2})
+    </insert>
+
+    <update id="update">
+        update rbac.role set name = #{name} where id = #{id}
+    </update>
+
+</mapper>

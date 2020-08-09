@@ -1,23 +1,25 @@
 package com.boss.rbac_learning.dao;
 
-import com.boss.rbac_learning.entity.User;
-import com.boss.rbac_learning.entity.UserForHighLevel;
+
+import com.boss.rbac_learning.entity.dto.UserDto;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 @Mapper
+@Repository
 public interface UserDao {
 
-    void updateAuthority(int authority, int id);
+    UserDto login(String username, String password);
 
-    List<UserForHighLevel> queryAllHighLevel();
+    int addUser(int id, String username, String password);
 
-    List<User> queryAll();
+    int deleteByName(String username);
 
-    void delById(int id);
+    int updateRole(String username,Integer roleid);
 
-    void add(UserForHighLevel user);
+    List<UserDto> queryAll();
+
+    List<String> getUserDetail(int id);
 }

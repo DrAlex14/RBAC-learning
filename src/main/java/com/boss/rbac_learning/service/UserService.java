@@ -1,19 +1,20 @@
 package com.boss.rbac_learning.service;
 
+import com.boss.rbac_learning.entity.vo.UserVo;
 
-import com.boss.rbac_learning.entity.User;
-import com.boss.rbac_learning.entity.UserForHighLevel;
 import java.util.List;
 
 public interface UserService {
 
-    void updateAuthority(int authority, int id);
+   UserVo login(String username,String password);
 
-    void delById(int id);
+   int addUser(int id,String username,String password);
 
-    void add(UserForHighLevel user);
+   int deleteByName(String username);
 
-    List<UserForHighLevel> queryAllHighLevel();
+    int updateRole(String username,Integer roleid);
 
-    List<User> queryAll();
+    List<UserVo> queryAll();
+
+    List<String> getUserDetail(int id);
 }

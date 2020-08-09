@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.boss.rbac_learning.dao.UserDao">
+    <select id="getUserDetail" resultType="String">
+        select premission.permissionurl
+        from rbac.premission
+        WHERE id = any(SELECT role_premission.permissionid FROM rbac.role_premission WHERE role_premission.roleid = (SELECT user.roleid FROM rbac.user WHERE user.id = #{id}))
+    </select>
+
+    <select id="queryAll" resultType="com.boss.rbac_learning.entity.dto.UserDto">
+        select id,username,roleid from rbac.user
+    </select>
+
+    <update id="updateRole">
+        update rbac.user set roleid = #{param2} where username = #{param1}
+    </update>
+
+    <delete id="deleteByName">
+        delete from rbac.user where username = #{username}
+    </delete>
+
+    <select id="login" resultType="com.boss.rbac_learning.entity.dto.UserDto">
+        select id,username,roleid from rbac.user where username = #{username} and password = #{password}
+    </select>
+
+    <insert id="addUser" >
+        insert into rbac.user(id, username, password, roleid) values (#{id},#{username},#{password},1)
+    </insert>
+
+</mapper>

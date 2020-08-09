@@ -1,5 +1,8 @@
 server:
   port: 8888
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain
 
 #db配置
 spring:
@@ -9,7 +12,7 @@ spring:
     username: root
     password: 1234
 
+
 mybatis:
   type-aliases-package: com.boss.rbac_learning.entity
   mapper-locations: classpath:mybatis/mapper/*.xml
-
