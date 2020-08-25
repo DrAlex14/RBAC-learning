@@ -4,6 +4,7 @@ import com.boss.rbac_learning.entity.vo.AuthorizationVo;
 import com.boss.rbac_learning.entity.vo.CommonResult;
 import com.boss.rbac_learning.service.AuthorizationService;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @Log4j2
 @RestController
+@CrossOrigin(origins = "*",maxAge = 3600)
 @RequestMapping("/authorization")
 public class AuthorizationController {
 

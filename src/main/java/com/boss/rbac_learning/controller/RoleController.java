@@ -4,15 +4,12 @@ import com.boss.rbac_learning.entity.vo.CommonResult;
 import com.boss.rbac_learning.entity.vo.RoleVo;
 import com.boss.rbac_learning.service.RoleService;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.util.List;
 
 @Log4j2
+@CrossOrigin(origins = "*",maxAge = 3600)
 @RestController
 @RequestMapping("/role")
 public class RoleController {
@@ -20,7 +17,7 @@ public class RoleController {
     @Resource
     RoleService roleService;
 
-    @PostMapping("/queryall")
+    @GetMapping("/queryall")
     public CommonResult<List<RoleVo>> queryAll(){
         List<RoleVo> roleVoList = roleService.queryAll();
         if(roleVoList.size() != 0){
@@ -31,7 +28,7 @@ public class RoleController {
     }
 
     @PostMapping("/addrole")
-    public CommonResult<Integer> addRole(int id,String name){
+    public CommonResult<Integer> addRole(@RequestParam int id,@RequestParam String name){
         int result = roleService.addRole(id,name);
         if(result > 0){
             return new CommonResult<Integer>(200,"添加角色成功",result);
@@ -41,7 +38,7 @@ public class RoleController {
     }
 
     @PostMapping("/delete")
-    public CommonResult<Integer> deleteByName(String name){
+    public CommonResult<Integer> deleteByName(@RequestParam("name") String name){
         int result = roleService.deleteByName(name);
         if(result > 0){
             return new CommonResult<Integer>(200,"删除角色成功",result);

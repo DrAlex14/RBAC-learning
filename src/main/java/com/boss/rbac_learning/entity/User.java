@@ -8,9 +8,8 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor
 @Accessors(chain = true)
 public class User {
-    private int id;
 
     private String username;
 
-    private int roleid;
+    private String password;
 }

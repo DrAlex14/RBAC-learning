@@ -5,6 +5,7 @@ import com.boss.rbac_learning.entity.vo.PremissionVo;
 import com.boss.rbac_learning.service.PremissionService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @Log4j2
 @RestController
+@CrossOrigin(origins = "*",maxAge = 3600)
 @RequestMapping("/permission")
 public class PremissionController {
 

@@ -21,6 +21,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserVo login(String username, String password) {
         UserDto userDto = userDao.login(username,password);
+        if(userDto == null){
+            return null;
+        }
         UserVo userVo = new UserVo();
         BeanUtils.copyProperties(userDto,userVo);
         return userVo;
@@ -29,7 +32,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public int addUser(int id, String username, String password) {
         UserPo userPo = new UserPo(id,username,password,1);
-        int result = userDao.addUser(id,username,password);
+        int result = 0;
+        try{
+            result = userDao.addUser(id,username,password);
+        } catch (Exception e) {
+           return 0;
+        }
         return result;
     }
 
