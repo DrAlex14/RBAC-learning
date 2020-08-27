@@ -6,7 +6,6 @@ import com.boss.rbac_learning.entity.vo.PremissionVo;
 import com.boss.rbac_learning.service.PremissionService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -46,5 +45,12 @@ public class PremissionServiceImpl implements PremissionService {
     public int deletePermission(String name) {
         int result = premissionDao.delete(name);
         return result;
+    }
+
+    @Override
+    public List<PremissionVo> queryPermissions(String name) {
+        List<PremissionVo> premissionVoList = premissionDao.queryPermisson(name);
+        log.info(premissionVoList);
+        return premissionVoList;
     }
 }

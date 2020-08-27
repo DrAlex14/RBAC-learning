@@ -10,4 +10,6 @@ public interface PremissionService {
     int addPermission(int id, String name, String permissionurl);
 
     int deletePermission(String name);
+
+    List<PremissionVo> queryPermissions(String name);
 }

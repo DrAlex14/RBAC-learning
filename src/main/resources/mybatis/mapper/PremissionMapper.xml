@@ -8,6 +8,10 @@
     <select id="queryAll" resultType="com.boss.rbac_learning.entity.dto.PremissionDto">
          select premission.id, premission.permissionname, premission.permissionurl FROM rbac.premission
     </select>
+    <select id="queryPermisson" resultType="com.boss.rbac_learning.entity.vo.PremissionVo">
+        SELECT * from rbac.premission JOIN rbac.role_premission ON role_premission.permissionid = premission.id JOIN rbac.role ON role.id = role_premission.roleid WHERE
+            role.name = #{name}
+    </select>
 
     <delete id="delete">
         delete from rbac.premission where permissionname = #{name}

@@ -8,7 +8,7 @@
     <select id="queryAll" resultType="com.boss.rbac_learning.entity.dto.RoleDto">
         select * from rbac.role
     </select>
-    <select id="queryPremissions" resultType="java.lang.String">
+    <select id="queryPremissions" resultType="String">
         SELECT permissionurl FROM rbac.premission
         WHERE id = any(SELECT role_premission.permissionid FROM rbac.role_premission
                        WHERE role_premission.roleid = (SELECT role.id FROM rbac.role

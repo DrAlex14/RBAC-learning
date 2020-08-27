@@ -4,12 +4,7 @@ import com.boss.rbac_learning.entity.vo.CommonResult;
 import com.boss.rbac_learning.entity.vo.PremissionVo;
 import com.boss.rbac_learning.service.PremissionService;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.util.List;
 
@@ -49,6 +44,16 @@ public class PremissionController {
             return new CommonResult<Integer>(200,"删除权限成功",result);
         }else {
             return new CommonResult<Integer>(400,"删除权限失败",result);
+        }
+    }
+
+    @PostMapping("/queryrolepermissions")
+    public CommonResult<List<PremissionVo>> queryRolePermissons(@RequestParam("name") String name){
+        List<PremissionVo> list = premissionService.queryPermissions(name);
+        if(list != null){
+            return new CommonResult<List<PremissionVo>>(200,"角色权限查询结果",list);
+        }else {
+            return new CommonResult<List<PremissionVo>>(400,"角色权限查询失败",null);
         }
     }
 }

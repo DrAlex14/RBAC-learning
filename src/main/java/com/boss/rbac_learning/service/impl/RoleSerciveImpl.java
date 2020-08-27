@@ -59,10 +59,9 @@ public class RoleSerciveImpl implements RoleService {
     }
 
     @Override
-    public List<String> queryPremissions(String name) {
+    public List<String> queryPermissions(String name) {
         List<String> list = roleDao.queryPremissions(name);
         log.info(list);
-
         return list;
     }
 

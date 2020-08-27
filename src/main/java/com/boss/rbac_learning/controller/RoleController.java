@@ -1,6 +1,7 @@
 package com.boss.rbac_learning.controller;
 
 import com.boss.rbac_learning.entity.vo.CommonResult;
+import com.boss.rbac_learning.entity.vo.PremissionVo;
 import com.boss.rbac_learning.entity.vo.RoleVo;
 import com.boss.rbac_learning.service.RoleService;
 import lombok.extern.log4j.Log4j2;
@@ -48,7 +49,7 @@ public class RoleController {
     }
 
     @PostMapping("/update")
-    public CommonResult<Integer> update(int id,String name){
+    public CommonResult<Integer> update(@RequestParam("roleid") int id,@RequestParam("name") String name){
         int result = roleService.update(id,name);
         if(result > 0){
             return new CommonResult<Integer>(200,"更新角色成功",result);
@@ -60,9 +61,9 @@ public class RoleController {
     /**
      * 查询角色权限
      */
-    @PostMapping("/querypremissions")
-    public CommonResult<List<String>> queryPremissions(String name){
-        List<String> list = roleService.queryPremissions(name);
+    @PostMapping("/querypermissions")
+    public CommonResult<List<String>> queryPermissions(@RequestParam("name") String name){
+        List<String> list = roleService.queryPermissions(name);
         if(list != null){
             return new CommonResult<List<String>>(200,"权限查询结果",list);
         }else {
