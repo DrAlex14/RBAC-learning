@@ -12,10 +12,4 @@ class RbacLearningApplicationTests {
     void contextLoads() {
     }
 
-    @Test
-    void test(){
-        String uuid = UUID.randomUUID().toString();
-        System.out.println(uuid);
-    }
-
 }

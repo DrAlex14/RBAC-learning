@@ -56,4 +56,5 @@ public class PremissionController {
             return new CommonResult<List<PremissionVo>>(400,"角色权限查询失败",null);
         }
     }
+
 }

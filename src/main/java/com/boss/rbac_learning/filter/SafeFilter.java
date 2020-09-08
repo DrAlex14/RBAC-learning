@@ -75,7 +75,6 @@ public class SafeFilter implements Filter {
                     log.info("权限不足");
                     res.sendRedirect("/nopermission");
                 }
-                filterChain.doFilter(req, res);//测试
             }
         }
     }
